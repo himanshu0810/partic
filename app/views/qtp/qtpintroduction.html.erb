@@ -1,0 +1,85 @@
+<div id="container">
+
+<!-- Here comes the Header Part -->
+
+<div id="header">
+
+</div>
+
+<!-- Header end -->
+
+<!-- Here comes the Content part -->
+
+<div id="content">
+
+<!-- Left Pane contains the article -->
+
+	<div id="main">
+		<div class="post">
+			<h2><a href="#"><%= @title %></a></h2>
+			<p class="date">18 <span>Jul</span></p>
+		<!--	<ul class="meta">
+				<li>Posted in <a href="#">Vlog</a></li>
+				<li class="comments"><a href="#">5 Comments</a></li> 
+			</ul>
+		-->
+			<div class="post-content">  
+			<%= @article %>
+			</div>	
+		</div>		
+		<div class="pagination">
+			<% if !@previous.nil? %>
+			<p class="prev"><%= link_to "Previous Post", :controller => :qtp, :action => @previous %> </p>
+			<% end %>
+			<p class="next"><%= link_to "Next Post", :controller => :qtp, :action => @next %> </p>
+		</div>		
+	</div>
+
+	<!-- Left Pane Ends -->
+
+	<!-- Right Pane Starts -->
+
+	
+	<!--Right Pane ENds -->
+
+</div>
+
+<!-- Content Ends -->
+
+<!-- Here comes the Footer -->
+
+<div id="footer-container">
+	<div id="footer">
+		<div id="tweet">
+			<p id="follow"><a href="#">Follow me</a></p>
+		</div>
+
+		<div id="latest-posts">
+			<h4>Latest blog posts</h4>
+			<ul>
+				<li><%= link_to "qtpintroduction", :controller => :qtp, :action => :qtpintroduction %> </li>
+				<li><%= link_to "recordingwaysandrunmodes", :controller => :qtp, :action => :recordingwaysandrunmodes %> </li>
+				<li><%= link_to "debugginganditsoptions", :controller => :qtp, :action => :debugginganditsoptions %> </li>
+				<li><%= link_to "objectspropertiestypes", :controller => :qtp, :action => :objectspropertiestypes %> </li>
+				<li><%= link_to "vbscript", :controller => :qtp, :action => :vbscript %> </li>
+				<li><%= link_to "actionsfunctions", :controller => :qtp, :action => :actionsfunctions %> </li>
+				<li><%= link_to "datatableparameterization", :controller => :qtp, :action => :datatableparameterization %> </li>
+				<li><%= link_to "checkpoints", :controller => :qtp, :action => :checkpoints %> </li>
+				<li><%= link_to "smartidentificationsynchronization", :controller => :qtp, :action => :smartidentificationsynchronization %> </li>
+				<li><%= link_to "regularexpressions", :controller => :qtp, :action => :regularexpressions %> </li>
+				<li><%= link_to "virtualobjectsfilesystemobjects", :controller => :qtp, :action => :virtualobjectsfilesystemobjects %> </li>
+				<li><%= link_to "recoveryscenarios", :controller => :qtp, :action => :recoveryscenarios %> </li>
+				<li><%= link_to "usefulsnippets", :controller => :qtp, :action => :usefulsnippets %> </li>
+				<li><%= link_to "batchtests", :controller => :qtp, :action => :batchtests %> </li>
+				<li><%= link_to "descriptive", :controller => :qtp, :action => :descriptive %> </li>
+				<li><%= link_to "frameworks", :controller => :qtp, :action => :frameworks %> </li>
+				<li><%= link_to "selenium", :controller => :qtp, :action => :selenium %> </li>
+							
+		</div>
+
+	</div>
+</div>
+
+
+<!-- Footer Ends here -->
+</div>

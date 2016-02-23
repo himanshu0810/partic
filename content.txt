@@ -1,0 +1,17 @@
+Back- End Framework
+Factors which define a good back-end framework ?? \n
+1-Security
+2-Scalable
+Some of the most heavily trafficked sites in the world use Rails. Actually doing the scaling is beyond the scope of just Rails, but rest assured that if your application ever needs to handle the load of Hulu or the Yellow Pages, Rails won’t stop you from taking over the world.The company I work for built our entire platform on Rails and we handle hundreds of thousands of transactions on a daily basis. There has been some complaint of Rails being a "slow" framework, but all in all with the right optimization and some experience with Rails it is a great tool.
+
+3-Performance
+As being an easy-to-use framework, rails is a pretty complex beast. Over the years, it has progressed from a simple framework to a robust framework with its collection of gems, add-ons and extensions.
+Rails is pretty fast. Its awesome concept of 
+
+4-Easy to implement
+
+5-Easy to learn
+
+6-Modifications
+
+7-
