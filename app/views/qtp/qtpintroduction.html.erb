@@ -31,7 +31,9 @@
 			<% if !@previous.nil? %>
 			<p class="prev"><%= link_to "Previous Post", :controller => :qtp, :action => @previous %> </p>
 			<% end %>
+			<% if !@next.nil? %>
 			<p class="next"><%= link_to "Next Post", :controller => :qtp, :action => @next %> </p>
+			<% end %>
 		</div>		
 	</div>
 

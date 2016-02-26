@@ -1228,95 +1228,105 @@ render "qtp/qtpintroduction"
 		@title= "Descriptive Programming"
 		@previous="batchtests"
 		@next="frameworks"
-		@article='Descriptive Programming provides a way to perform operations on objects that are not present in object repository. 
+		@article='Descriptive Programming provides a way to perform operations on objects that are not present in object repository. <br><br>
 
-How to do it? There are two ways.
-
-Create Description Objects
-
-
-First a description object is created
+How to do it? There are two ways.<br><br>
+	<ul>
+<li>
+Create Description Objects</li>
+<ul>
+<li>
+First a description object is created</li>
+<li>
 Then unique properties are assigned to it which will identify the object in run time in the application
+</li>
+</ul>
+Ex :    <br>
+Dim oDesc ‘Declare an object variable<br>
+Set oDesc = Description.Create ‘Create an empty description<br>
+<br>
+Now Assign Property values<br><br>
 
-Ex :    
-Dim oDesc ‘Declare an object variable
-Set oDesc = Description.Create ‘Create an empty description
+oDesc(“type”).value= “text”<br>
+oDesc(“name”).value= “userName”<br>
+oDesc(“html tag”).value= “INPUT”<br>
 
-Now Assign Property values
-
-oDesc(“type”).value= “text”
-oDesc(“name”).value= “userName”
-oDesc(“html tag”).value= “INPUT”
-
-
+<li>
 Use Description Strings
+</li>
+<ul>
+<li>
+Prepare a string with a tuple of property name and value</li>
+<li>Provide this string in within () and it will access the object name</li>
+</ul>
+Ex : <br>   
+Button(“name:=buttonLogin”,”id:=1234”).click<br>
+</ul>
+To determine which property and value pairs to use, you can use the Object Spy:<br><br>
 
+Go to Tools -> Object Spy.<br>
+Select the "Test Object Properties" radio button.<br>
+Click on the desired object.<br>
+In the Properties list, find and write down the properties and values that can be used to identify the object.<br>
 
-Prepare a string with a tuple of property name and value
-Provide this string in within () and it will access the object name
-
-Ex :    
-Button(“name:=buttonLogin”,”id:=1234”).click
-
-To determine which property and value pairs to use, you can use the Object Spy:
-
-Go to Tools -> Object Spy.
-Select the "Test Object Properties" radio button.
-Click on the desired object.
-In the Properties list, find and write down the properties and values that can be used to identify the object.
-
-
-Advantages:
-
-Descriptive Programming based Test scripts are faster in execution than Repository based Test scripts.
-
-Scripts are portable (we can run these scripts from any machine easily)
-
-Maintenance is easy (less amount of resources)
-
-Start Test Execution process even though Application is not ready.
-
-
-When to Use Descriptive Programming?
-
+<b>
+Advantages:</b><br>
+<ul>
+<li>
+Descriptive Programming based Test scripts are faster in execution than Repository based Test scripts.</li>
+<li>
+Scripts are portable (we can run these scripts from any machine easily)</li>
+<li>
+Maintenance is easy (less amount of resources)</li>
+<li>
+Start Test Execution process even though Application is not ready.</li>
+</ul>
+<b>
+When to Use Descriptive Programming?</b><br>
+<ul>
+<li>
 When you are creating functions in an external file. You can use these function in various actions directly , eliminating the need of adding object(s) in object repository for each action[If you are using per action object repository]
-
+</li>
+<li>
 
 The objects in the application are dynamic in nature and need special handling to identify the object. 
 
-
+</li>
+<li>
 When object repository is getting huge due to the no. of objects being added. If the size of Object repository increases too much then it decreases the performance of QTP while recognizing a object. [For QTP8.2 and below Mercury recommends that OR size should not be greater than 1.5MB]
-
+</li>
+<li>
 When you don’t want to use object repository at all. 
-
-
+</li>
+<b>
 Child Objects
-
+</b>
+<br><br>
 ChildObjects method is used to retrieve all objects located inside a specified parent object, or only those child objects that fit a certain programmatic description. 
-
+<br><br>
 To retrieve this subset of child objects, you first create a description object, and then you add the set of properties and values that you want your child object collection to match using the Description object.
-
+<br><br>
 Use the Description object to create the programmatic description for the ChildObjects description argument. 
-
+<br><br>
 After you build a description in your description object, use the following syntax to retrieve child objects that match the description:
-
+<br><br>
 Set objSet=TestObject.ChildObjects(Description)
 
+<br><br>
 
 
+Example<br>
 
-Example
+The statements below instruct QuickTest to select all of the check boxes on the Itinerary Web page:<br><br>
 
-The statements below instruct QuickTest to select all of the check boxes on the Itinerary Web page:
-
-Set ObjSet= Description.Create()
-ObjSet("html tag").Value = "INPUT"
-ObjSet("type").Value = "checkbox"
-Set Checkboxes = Browser("Itinerary").Page("Itinerary").ChildObjects(ObjSet)
-NoOfChildObjs = Checkboxes.Count
-For Counter=0 to NoOfChildObjs-1
-Checkboxes(Counter).Set "ON"
-Next
+Set ObjSet= Description.Create()<br>
+ObjSet("html tag").Value = "INPUT"<br>
+ObjSet("type").Value = "checkbox"<br>
+Set Checkboxes = Browser("Itinerary").Page("Itinerary").ChildObjects(ObjSet)<br>
+NoOfChildObjs = Checkboxes.Count<br>
+For Counter=0 to NoOfChildObjs-1<br>
+Checkboxes(Counter).Set "ON"<br>
+Next<br>
 '.html_safe
 render "qtp/qtpintroduction"
 	end
@@ -1325,64 +1335,73 @@ render "qtp/qtpintroduction"
 		@title= "Frameworks"
 		@previous="descriptive"
 		@next="selenium"
-		@article='Test automation framework is an integrated system that sets the rules of automation of a specific product. This system integrates the function libraries, test data sources, object details and various reusable modules. 
+		@article='<b>Test automation framework </b>is an integrated system that sets the rules of automation of a specific product. This system integrates the function libraries, test data sources, object details and various reusable modules. <br><br>
 
-These components act as small building blocks which need to be assembled to represent a business process. 
+These components act as small building blocks which need to be assembled to represent a business process. <br><br>
 
 The framework provides the basis of test automation and simplifies the automation effort.
+<br><br>
+<b>
+Types of Automation Frameworks</b>
 
-Types of Automation Frameworks
-
-
-Linear (procedural code, possibly generated by tools like those that use record and playback)
-
-Structured (uses control structures - typically ‘if-else’, ‘switch’, ‘for’, ‘while’ conditions/ statements)
-
-Data-driven (data is persisted outside of tests in a database, spreadsheet, or other mechanism)
-
-Keyword-driven
-
-Hybrid (two or more of the patterns above are used)
-
+<br><br>
+<ul>
+<li>
+Linear (procedural code, possibly generated by tools like those that use record and playback)</li>
+<li>
+Structured (uses control structures - typically ‘if-else’, ‘switch’, ‘for’, ‘while’ conditions/ statements)</li>
+<li>
+Data-driven (data is persisted outside of tests in a database, spreadsheet, or other mechanism)</li>
+<li>
+Keyword-driven</li>
+<li>
+Hybrid (two or more of the patterns above are used)</li>
+<li>
 Agile automation framework
+</li>
+</ul>
+<b>
+Key Principles for Automation Framework Design</b></br></br>
 
+<b>
+Maintainability and Extendibility</b> - The automation suite would be easily maintainable. </br></br>
 
-
-Key Principles for Automation Framework Design
-
-
-Maintainability and Extendibility - The automation suite would be easily maintainable. 
-
-Nomenclature of the scripts and functions be kept simple and the code be well commented. 
+Nomenclature of the scripts and functions be kept simple and the code be well commented. </br></br>
 
 The suite also needs to be extendible. This would imply building a common framework and standards on which more enhancements to application or test scenarios can be easily added. 
+</br></br>
 
+<b>Customization </b>- Test data would be parameterized into constants or data files. Abstract all variant data and include them in files/ data tables. These should not affect the code.</br></br>
+<b>Scalability:</b> Framework would allow scheduling all test scripts or targeted test scripts from different modules for execution single run/test. This provides the flexibility that there is no dependency that different module to be tested or executed separately.</br></br>
+<b>
+Modularity: </b>Framework would be Modular. Different components of the Framework would be divided into separate modules/ actions. Functions help a lot in this.
+</br></br>
+<b>
+Error Handling: </b>Framework would be capable of handling any kind of unexpected errors.
+</br></br>
+<b>
+Reporting:</b> Framework would generate a comprehensive report which is easy to analyze and can be shared with client.</br></br>
+<b>
+Explaining the Key Word Driven Framework</b></br></br>
 
-Customization - Test data would be parameterized into constants or data files. Abstract all variant data and include them in files/ data tables. These should not affect the code.
-Scalability: Framework would allow scheduling all test scripts or targeted test scripts from different modules for execution single run/test. This provides the flexibility that there is no dependency that different module to be tested or executed separately.
+In keyword driven automation framework, focus is mainly on kewords/functions and not the test data. This means we focus on creating the functions that are mapped to the functionality of the application.</br></br>
 
-Modularity: Framework would be Modular. Different components of the Framework would be divided into separate modules/ actions. Functions help a lot in this.
+Main components in keyword driven automation framework </br></br>
 
-Error Handling: Framework would be capable of handling any kind of unexpected errors.
-
-Reporting: Framework would generate a comprehensive report which is easy to analyze and can be shared with client.
-
-Explaining the Key Word Driven Framework
-
-In keyword driven automation framework, focus is mainly on kewords/functions and not the test data. This means we focus on creating the functions that are mapped to the functionality of the application.
-
-Main components in keyword driven automation framework 
-
-Scripts Library: In large automation frameworks there would be plenty of functions and these would be required by many modules in the framework. Therefore the reusable funclions are created and stored as library files.
-Object Repository: Collection of local & shared object repositories in the framework.
-Test Data: Usually stored in data table itself, can also be stored in external files.
-Settings and Environment Variables: A list of important settings are mentioned here,
-Object Synchronization timeout
-When Error Occurs during run session
-Resources - Associated library files
-Environment - We need to set up some variables like folder path
-Recovery - We must associate the recovery scenario file to the test. Recovery Scenario will handle unexpected events during execution. This will help for smooth execution using QTP.
-Reports will display the total number of test cases executed, Total Pass Test cases, Total Failed test cases and total time required to execute the test cases. This will give better picture of QTP Execution.
+<b>Scripts Library:</b> In large automation frameworks there would be plenty of functions and these would be required by many modules in the framework. Therefore the reusable funclions are created and stored as library files.</br>
+<b>Object Repository: </b>Collection of local & shared object repositories in the framework.</br>
+<b>Test Data: </b>Usually stored in data table itself, can also be stored in external files.</br>
+<b>Settings and Environment Variables:</b> A list of important settings are mentioned here,</br>
+<ul>
+<li>
+<li>Object Synchronization timeout</li>
+<li>When Error Occurs during run session</li>
+<li>Resources - Associated library files</li>
+<li>Environment - We need to set up some variables like folder path</li>
+<li>Recovery - We must associate the recovery scenario file to the test. Recovery Scenario will handle unexpected events during execution. This will help for smooth execution using QTP.</li>
+</ul>
+<br>
+<b>Reports </b>will display the total number of test cases executed, Total Pass Test cases, Total Failed test cases and total time required to execute the test cases. This will give better picture of QTP Execution.
 
 '.html_safe
 render "qtp/qtpintroduction"
@@ -1391,64 +1410,64 @@ render "qtp/qtpintroduction"
 	def selenium
 		@title= "Qtp Vs Selenium"
 		@previous="selenium"
-		@article='Why Test Automation?
+		@article='Why Test Automation?<br><br>
+<ul>
 
-Fast and Accurate
-Effective
-Click once and Run N Times
-Modifiable
-Reusable
+<li>Fast and Accurate</li>
+<li>Effective</li>
+<li>Click once and Run N Times</li>
+<li>Modifiable</li>
+<li>Reusable</li>
+</ul>
+In short, Test Automation is super powerful in executing test cases.<br><br>
 
-In short, Test Automation is super powerful in executing test cases.
-
-Lets compare two of the main software’s which are used for automated testing and let you decide which is best for your project
-
-
-The two automation software we compare here are:
+Lets compare two of the main software’s which are used for automated testing and let you decide which is best for your project<br><br>
 
 
-HP Quick Test Professional
+The two automation software we compare here are:<br>
 
-Selenium
-
-
-HP QuickTest Professional (QTP) provides functional and regression test automation for software applications and environments and is one of the leading players in the market when it comes to functional and regression testing. 
-
-Key Advantages:
-
-Uses VBScript as scripting language
-Easy to use due to its simple interface and the flow of steps in code (expert view) and step wise view (keyword view).
-Different types of record and playback options
-No expert level coding experience required
-Smooth integration with other HP products like Test management tool HP Quality center.
-Detailed and good looking results viewer enables the user to gather, understand, analyze and store results which could be quickly reviewed and even played back in a later point in time.
-
+<ul>
+<li>HP Quick Test Professional</li>
+<li>Selenium</li>
+</ul><br>
+<b>
+HP QuickTest Professional (QTP) </b>provides functional and regression test automation for software applications and environments and is one of the leading players in the market when it comes to functional and regression testing. <br><br>
+<b>
+Key Advantages:</b><br>
+<ul>
+<li>Uses VBScript as scripting language</li>
+<li>Easy to use due to its simple interface and the flow of steps in code (expert view) and step wise view (keyword view).</li>
+<li>Different types of record and playback options</li>
+<li>No expert level coding experience required</li>
+<li>Smooth integration with other HP products like Test management tool HP Quality center.</li>
+<li>Detailed and good looking results viewer enables the user to gather, understand, analyze and store results which could be quickly reviewed and even played back in a later point in time.</li>
+</ul>
+A few challenges:<br>
+<ul>
+<li>High cost is associated with HP Quick test Professional license. </li>
+<li>Do not support Operating Systems other than Windows</li>
+<li>QTP doesn’t support the latest browser versions; there is always a lag in the latest browser in the market to be supported by HP QTP.</li>
+<li>The resource utilization (CPU & Memory) is considerably high in QTP. </li>
+</ul>
+<b>
+Selenium</b> is a set of different software tools each with a different approach to supporting test automation. It is the most powerful open source automation tool available. <br><br>
+<b>
+Key Advantages:</b><br><br>
+<ul>
+<li>Selenium is absolutely free of cost and that gives it a huge advantage over other automation tools.</li>
+<li>Selenium supports many languages like Java, C#, Ruby etc and requires skilled expertise build a test automation framework.</li>
+<li>Selenium supports almost all major browsers and its latest versions in the market.</li>
+<li>Selenium is very powerful in integrating with external applications like Maven, TestNG, Jenkins etc.</li>
+</ul>
+<b>
 A few challenges:
+</b><br><br>
+<ul>
+<li>Selenium supports only browsers and not windows based applications. </li>
+<li>You will have to build a complete framework and wouldn’t have the inbuilt features that QTP has.</li>
+<li>An expert level coder is required to develop and maintain the code.</li>
 
-High cost is associated with HP Quick test Professional license. 
-Do not support Operating Systems other than Windows
-QTP doesn’t support the latest browser versions; there is always a lag in the latest browser in the market to be supported by HP QTP.
-The resource utilization (CPU & Memory) is considerably high in QTP. 
-
-Selenium is a set of different software tools each with a different approach to supporting test automation. It is the most powerful open source automation tool available. 
-
-Key Advantages:
-
-Selenium is absolutely free of cost and that gives it a huge advantage over other automation tools.
-Selenium supports many languages like Java, C#, Ruby etc and requires skilled expertise build a test automation framework.
-Selenium supports almost all major browsers and its latest versions in the market.
-Selenium is very powerful in integrating with external applications like Maven, TestNG, Jenkins etc.
-
-
-A few challenges:
-
-Selenium supports only browsers and not windows based applications. 
-You will have to build a complete framework and wouldn’t have the inbuilt features that QTP has.
-An expert level coder is required to develop and maintain the code.
-
-
-HP QTP v/s Selenium Comparison Table
-
+</ul>
 
 '.html_safe
 render "qtp/qtpintroduction"
